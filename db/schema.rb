@@ -11,10 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618161323) do
+ActiveRecord::Schema.define(version: 20160619055042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: true do |t|
+    t.string   "tradeName"
+    t.string   "businessName"
+    t.string   "rfc"
+    t.string   "employees"
+    t.string   "comercialBusiness"
+    t.string   "sector"
+    t.integer  "schedule_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["schedule_id"], name: "index_companies_on_schedule_id", using: :btree
+
+  create_table "schedules", force: true do |t|
+    t.time     "mondayStart"
+    t.time     "mondayEnd"
+    t.time     "tuesdayStart"
+    t.time     "tuesdayEnd"
+    t.time     "wednesdayStart"
+    t.time     "wednesdayEnd"
+    t.time     "thursdayStart"
+    t.time     "thursdayEnd"
+    t.time     "saturdayStart"
+    t.time     "saturdayEnd"
+    t.time     "sundayStart"
+    t.time     "sundayEnd"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "company_id"
+  end
+
+  add_index "schedules", ["company_id"], name: "index_schedules_on_company_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160618161323) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
