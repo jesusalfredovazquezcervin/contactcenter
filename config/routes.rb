@@ -2,7 +2,15 @@ Myapp::Application.routes.draw do
 
 
 
+  resources :companies
+
+  resources :schedules
+
   Rails.application.routes.draw do
+  resources :companies
+
+  resources :schedules
+
     devise_for :users, controllers: {
                          sessions: 'users/sessions'
                      }
@@ -10,7 +18,8 @@ Myapp::Application.routes.draw do
 
 
   # You can have the root of your site routed with "root"
-  root to: 'dashboards#dashboard_1'
+  #root to: 'dashboards#dashboard_1'
+  root to: 'home#index'
 
   # All routes
   get "dashboards/dashboard_1"
