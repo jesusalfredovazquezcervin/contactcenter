@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620005722) do
+ActiveRecord::Schema.define(version: 20160620051548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,9 @@ ActiveRecord::Schema.define(version: 20160620005722) do
     t.string   "employees"
     t.string   "comercialBusiness"
     t.string   "sector"
-    t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "companies", ["schedule_id"], name: "index_companies_on_schedule_id", using: :btree
 
   create_table "schedules", force: true do |t|
     t.time     "mondayStart"
@@ -45,7 +42,11 @@ ActiveRecord::Schema.define(version: 20160620005722) do
     t.time     "sundayEnd"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "company_id"
   end
+
+  add_index "schedules", ["company_id"], name: "index_schedules_on_company_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
