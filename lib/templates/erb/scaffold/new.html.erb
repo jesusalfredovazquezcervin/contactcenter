@@ -1,16 +1,16 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
-    <h2>Alta de company</h2>
+    <h2>Alta de <%= singular_table_name %></h2>
 
     <ol class="breadcrumb">
       <li>
-        <%= link_to 'Home', root_path  %>
+        <%%= link_to 'Home', root_path  %>
       </li>
       <li>
         Catalogos
       </li>
       <li class="active">
-        <strong><%= link_to 'company', companies_path  %></strong>
+        <strong><%%= link_to '<%= singular_table_name %>', <%= index_helper %>_path  %></strong>
       </li>
     </ol>
   </div>
@@ -23,7 +23,7 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5><small class="m-l-sm">En esta pantalla puedes capturar un nuevo registro de company</small></h5>
+          <h5><small class="m-l-sm">En esta pantalla puedes capturar un nuevo registro de <%= singular_table_name %></small></h5>
           <div class="ibox-tools">
             <a class="collapse-link">
               <i class="fa fa-chevron-up"></i>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="ibox-content">
-          <%= render 'form' %>
+          <%%= render 'form' %>
         </div>
       </div>
     </div>

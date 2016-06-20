@@ -1,45 +1,90 @@
-<%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
+  <%= form_for(@company, class: "form-horizontal") do |f| %>
+  <% if @company.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@company.errors.count, "error") %> no permitieron guardar el registro de company:</h2>
+
+    <ul>
       <% @company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :tradeName %><br>
-    <%= f.text_field :tradeName %>
+        <div class="form-group">
+                   <%= f.label :tradeName , class: "col-lg-2 control-label"%>
+           <div class="col-lg-6">
+             <%= f.text_field :tradeName , class: "form-control"%>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+        <div class="form-group">
+                   <%= f.label :businessName , class: "col-lg-2 control-label"%>
+           <div class="col-lg-6">
+             <%= f.text_field :businessName , class: "form-control"%>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+        <div class="form-group">
+                   <%= f.label :rfc , class: "col-lg-2 control-label"%>
+           <div class="col-lg-6">
+             <%= f.text_field :rfc , class: "form-control"%>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+        <div class="form-group">
+                   <%= f.label :employees , class: "col-lg-2 control-label"%>
+           <div class="col-lg-6">
+             <%= f.text_field :employees , class: "form-control"%>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+        <div class="form-group">
+                   <%= f.label :comercialBusiness , class: "col-lg-2 control-label"%>
+           <div class="col-lg-6">
+             <%= f.text_field :comercialBusiness , class: "form-control"%>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+        <div class="form-group">
+                   <%= f.label :sector , class: "col-lg-2 control-label"%>
+           <div class="col-lg-6">
+             <%= f.text_field :sector , class: "form-control"%>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+        <div class="form-group">
+                   <%= f.label :schedule_id, class: "col-lg-2 control-label" %>
+           <div class="col-lg-6">
+             <%= f.select :schedule_id, options_for_select( Schedule.all.collect { |schedule|
+                                                              [schedule.name, schedule.id] }, @company.schedule_id), {}, {class: "chosen-select", style: "width:350px;" } %>
+           </div><br><div class="hr-line-dashed"></div>
+              </div>
+  
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+      <%= link_to 'Cancelar', companies_path, class: "btn btn-outline btn-danger btn-lg" %>
+      <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary btn-lg") do %>
+          <i class="fa fa-database"></i> Guardar
+      <% end %>
+    </div>
+
+
+
   </div>
-  <div class="field">
-    <%= f.label :businessName %><br>
-    <%= f.text_field :businessName %>
-  </div>
-  <div class="field">
-    <%= f.label :rfc %><br>
-    <%= f.text_field :rfc %>
-  </div>
-  <div class="field">
-    <%= f.label :employees %><br>
-    <%= f.text_field :employees %>
-  </div>
-  <div class="field">
-    <%= f.label :comercialBusiness %><br>
-    <%= f.text_field :comercialBusiness %>
-  </div>
-  <div class="field">
-    <%= f.label :sector %><br>
-    <%= f.text_field :sector %>
-  </div>
-  <div class="field">
-    <%= f.label :schedule_id %><br>
-    <%= f.text_field :schedule_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <br><br>
+  <% end %>
+
+
+  <% content_for :javascript do %>
+
+      <script type="text/javascript">
+
+
+          var config = {
+              '.chosen-select'           : {},
+              '.chosen-select-deselect'  : {allow_single_deselect:true},
+              '.chosen-select-no-single' : {disable_search_threshold:10},
+              '.chosen-select-no-results': {no_results_text:'No existen registros!'},
+              '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+              $(selector).chosen(config[selector]);
+          }
+      </script>
+  <% end %>
