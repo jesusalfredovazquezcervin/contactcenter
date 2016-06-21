@@ -1,39 +1,127 @@
-<p id="notice"><%= notice %></p>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Monstrando un registro de companies </h2>
 
-<p>
-  <strong>Tradename:</strong>
-  <%= @company.tradeName %>
-</p>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', root_path  %>
+      </li>
+      <li>
+        Catalogos
+      </li>
+      <li class="active">
+        <strong><%= link_to 'company', companies_path  %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
 
-<p>
-  <strong>Businessname:</strong>
-  <%= @company.businessName %>
-</p>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <%= link_to 'Nuevo Company', new_company_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <small class="m-l-sm">En esta pantalla se muestran los valores de un registro de company</small>
+          <div class="ibox-tools">
+            Mostrando el registro: <strong> <%= @company.id%></strong>
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
 
-<p>
-  <strong>Rfc:</strong>
-  <%= @company.rfc %>
-</p>
+        <div class="ibox-content">
 
-<p>
-  <strong>Employees:</strong>
-  <%= @company.employees %>
-</p>
+                            <div class="form-group">
 
-<p>
-  <strong>Comercialbusiness:</strong>
-  <%= @company.comercialBusiness %>
-</p>
+                          <h4>Tradename:</h4>
+                          <div class="col-sm-5">
+                            <%= @company.tradeName %>
+                          </div><br>
+                  </div>
+                            <div class="form-group">
 
-<p>
-  <strong>Sector:</strong>
-  <%= @company.sector %>
-</p>
+                          <h4>Businessname:</h4>
+                          <div class="col-sm-5">
+                            <%= @company.businessName %>
+                          </div><br>
+                  </div>
+                            <div class="form-group">
 
-<p>
-  <strong>Schedule:</strong>
-  <%= @company.schedule %>
-</p>
+                          <h4>Rfc:</h4>
+                          <div class="col-sm-5">
+                            <%= @company.rfc %>
+                          </div><br>
+                  </div>
+                            <div class="form-group">
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+                          <h4>Employees:</h4>
+                          <div class="col-sm-5">
+                            <%= @company.employees %>
+                          </div><br>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>Comercialbusiness:</h4>
+                          <div class="col-sm-5">
+                            <%= @company.comercialBusiness %>
+                          </div><br>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>Sector:</h4>
+                          <div class="col-sm-5">
+                            <%= @company.sector %>
+                          </div><br>
+                  </div>
+            
+            <div class="form-group">
+              <div class="col-sm-6 col-sm-offset-2">
+
+                <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
+                <i class="fa fa-database"></i> Guardar
+                <% end %>
+                <%= link_to companies_path, class: "btn btn-outline btn-danger pull-left" do%>
+                <i class="fa fa-list-ol"></i> Listado
+                <% end %>
+              </div>
+            </div><br><br>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+    $(function() {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+        $('.dataTables-example').dataTable({
+            "order": [[ 0, "desc" ]],
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sSwfPath": "../../assets/dataTables/swf/copy_csv_xls_pdf.swf"
+            }
+        });
+
+    });
+
+</script>
+
+<% end %>
