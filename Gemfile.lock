@@ -28,21 +28,26 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    airbrussh (1.0.2)
+      sshkit (>= 1.6.1, != 1.7.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.0.0)
       sass (~> 3.2)
     builder (3.2.2)
-    capistrano (3.4.1)
+    capistrano (3.5.0)
+      airbrussh (>= 1.0.0)
+      capistrano-harrow
       i18n
       rake (>= 10.0.0)
-      sshkit (~> 1.3)
+      sshkit (>= 1.9.0)
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-figaro-yml (1.0.2)
       capistrano (~> 3.1)
       sshkit (~> 1.2, >= 1.2.0)
+    capistrano-harrow (0.5.1)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.1.7)
@@ -163,7 +168,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (= 3.3.0.0)
-  capistrano (~> 3.4.0)
+  capistrano (~> 3.5)
   capistrano-figaro-yml (~> 1.0.2)
   capistrano-passenger
   capistrano-rails (~> 1.1.3)
