@@ -1,14 +1,14 @@
 # config valid only for current version of Capistrano
 lock '3.4.1'
 
-set :application, 'contactcenter'
+set :application, 'contact'
 set :repo_url, 'https://github.com/jesusalfredovazquezcervin/contactcenter.git'
 set :passenger_restart_with_touch, true
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/contactcenter'
+set :deploy_to, '/home/deploy/contact'
 
 # Default value for :scm is :git
 # set :scm, :git
