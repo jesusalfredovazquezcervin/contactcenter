@@ -54,3 +54,11 @@ gem 'devise', '~> 3.5.6'
 gem 'figaro', '~> 1.1.1'
 
 gem 'jquery-rails' #Sirve para que se pueda realizar el sign_out, se agregó en el applicaion.js  "jquery_ujs"
+
+group :runtime, :test do
+  gem 'css_parser', '~> 1.3', '>= 1.3.7'
+  gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
+
+  #la pide exception_notification
+  #gem 'activesupport', '~> 4.2', '>= 4.2.6'
+end
