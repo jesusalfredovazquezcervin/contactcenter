@@ -9,7 +9,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <strong class="font-bold"><%= current_user.name%></strong>
+                                <strong class="font-bold"><%= user_signed_in? ? (current_user.name):(nil)%></strong>
                             </span> <span class="text-muted text-xs block">Vendedor <b class="caret"></b></span>
                         </span>
                     </a>
