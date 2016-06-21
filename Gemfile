@@ -45,6 +45,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-figaro-yml', '~> 1.0.2'
 end
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
