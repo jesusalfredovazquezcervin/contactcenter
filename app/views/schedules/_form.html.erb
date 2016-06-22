@@ -22,7 +22,7 @@
       <%= f.label "Compañia", class: "col-lg-2 control-label" %>
       <div class="col-lg-6">
         <%= f.select :company_id, options_for_select(Company.all.collect { |company|
-                                                       [company.tradeName, company.id] }, @schedule.company_id), {required: true}, { class:"chosen-select", style: "width:350px;"  } %>
+                                                       [company.tradeName, company.id] }, @schedule.company_id), {include_blank: "Sin compañia"}, { class:"chosen-select", style: "width:350px;"  } %>
       </div>
     </div><br><div class="hr-line-dashed"></div>
 
