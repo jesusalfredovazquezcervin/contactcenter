@@ -45,6 +45,7 @@
                                     <th>Employees</th>
                                     <th>Comercialbusiness</th>
                                     <th>Sector</th>
+                                    <th>Contacto</th>
                                 <th>&nbsp;&nbsp;Acciones&nbsp;&nbsp;</th>
 
               </tr>
@@ -81,7 +82,7 @@
                                     <td>
                         <%= company.sector %>
                     </td>
-
+                    <td><%= Contact.find_by_id(company.contact_id).try(:name) %></td>
 
                                 <td>
                   <%= link_to  company do %>

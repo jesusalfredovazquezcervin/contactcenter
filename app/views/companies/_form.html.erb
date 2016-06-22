@@ -28,7 +28,6 @@
                    <%= f.label :rfc , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
              <%= f.text_field :rfc , class: "form-control", required: true, :data => {:mask=> 'aaaa-999999-***'}, placeholder: ""%>
-             <span class="help-block">SAOK-790530-QZ2</span>
            </div>
 
 
@@ -55,6 +54,14 @@
              <%= f.text_field :sector , class: "form-control"%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
+
+      <div class="form-group">
+        <%= f.label "Contacto", class: "col-lg-2 control-label" %>
+        <div class="col-lg-6">
+          <%= f.select :contact_id, options_for_select(Contact.all.collect { |contact|
+                                                         [contact.name, contact.id] }, @company.contact_id), {include_blank: "Sin contacto"}, { class:"chosen-select", style: "width:350px;"  } %>
+        </div>
+      </div><br><div class="hr-line-dashed"></div>
   
   <div class="form-group">
     <div class="col-sm-6 col-sm-offset-2">
