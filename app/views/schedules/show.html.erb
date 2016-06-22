@@ -4,13 +4,13 @@
 
     <ol class="breadcrumb">
       <li>
-        <%= link_to 'Home', root_path  %>
+        <%= link_to 'Home', root_path %>
       </li>
       <li>
         Catalogos
       </li>
       <li class="active">
-        <strong><%= link_to 'schedule', schedules_path  %></strong>
+        <strong><%= link_to 'schedule', schedules_path %></strong>
       </li>
     </ol>
   </div>
@@ -26,7 +26,7 @@
           <%= link_to 'Nuevo Schedule', new_schedule_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <small class="m-l-sm">En esta pantalla se muestran los valores de un registro de schedule</small>
           <div class="ibox-tools">
-            Mostrando el registro: <strong> <%= @schedule.id%></strong>
+            Mostrando el registro: <strong> <%= @schedule.id %></strong>
             <a class="collapse-link">
               <i class="fa fa-chevron-up"></i>
             </a>
@@ -38,111 +38,143 @@
 
         <div class="ibox-content">
 
-                            <div class="form-group">
+          <div class="form-group">
+            <h4>Name:</h4>
+            <div class="col-sm-5">
+              <%= @schedule.name %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+            <h4>Compañia:</h4>
+            <div class="col-sm-5">
+              <%= @schedule.company.tradeName%>
+            </div>
+            <br>
+          </div>
 
-                          <h4>Name:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.name %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+          <div class="form-group">
 
-                          <h4>Mondaystart:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.mondayStart %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <h4>Mondaystart:</h4>
 
-                          <h4>Mondayend:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.mondayEnd %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <div class="col-sm-5">
+              <%= @schedule.mondayStart %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
 
-                          <h4>Tuesdaystart:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.tuesdayStart %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <h4>Mondayend:</h4>
 
-                          <h4>Tuesdayend:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.tuesdayEnd %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <div class="col-sm-5">
+              <%= @schedule.mondayEnd %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
 
-                          <h4>Wednesdaystart:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.wednesdayStart %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <h4>Tuesdaystart:</h4>
 
-                          <h4>Wednesdayend:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.wednesdayEnd %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <div class="col-sm-5">
+              <%= @schedule.tuesdayStart %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
 
-                          <h4>Thursdaystart:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.thursdayStart %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <h4>Tuesdayend:</h4>
 
-                          <h4>Thursdayend:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.thursdayEnd %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <div class="col-sm-5">
+              <%= @schedule.tuesdayEnd %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
 
-                          <h4>Saturdaystart:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.saturdayStart %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <h4>Wednesdaystart:</h4>
 
-                          <h4>Saturdayend:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.saturdayEnd %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <div class="col-sm-5">
+              <%= @schedule.wednesdayStart %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
 
-                          <h4>Sundaystart:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.sundayStart %>
-                          </div><br>
-                  </div>
-                            <div class="form-group">
+            <h4>Wednesdayend:</h4>
 
-                          <h4>Sundayend:</h4>
-                          <div class="col-sm-5">
-                            <%= @schedule.sundayEnd %>
-                          </div><br>
-                  </div>
-            
-            <div class="form-group">
-              <div class="col-sm-6 col-sm-offset-2">
-                <%= link_to schedules_path, class: "btn btn-outline btn-danger pull-left" do%>
-                <i class="fa fa-list-ol"></i> Listado
-                <% end %>
+            <div class="col-sm-5">
+              <%= @schedule.wednesdayEnd %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
 
-                <%= link_to edit_schedule_path(@schedule) , class: "btn btn-outline btn-primary pull-right" do %>
+            <h4>Thursdaystart:</h4>
+
+            <div class="col-sm-5">
+              <%= @schedule.thursdayStart %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Thursdayend:</h4>
+
+            <div class="col-sm-5">
+              <%= @schedule.thursdayEnd %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Saturdaystart:</h4>
+
+            <div class="col-sm-5">
+              <%= @schedule.saturdayStart %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Saturdayend:</h4>
+
+            <div class="col-sm-5">
+              <%= @schedule.saturdayEnd %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Sundaystart:</h4>
+
+            <div class="col-sm-5">
+              <%= @schedule.sundayStart %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Sundayend:</h4>
+
+            <div class="col-sm-5">
+              <%= @schedule.sundayEnd %>
+            </div>
+            <br>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-2">
+              <%= link_to schedules_path, class: "btn btn-outline btn-danger pull-left" do %>
+                  <i class="fa fa-list-ol"></i> Listado
+              <% end %>
+
+              <%= link_to edit_schedule_path(@schedule), class: "btn btn-outline btn-primary pull-right" do %>
                   <i class="fa fa-pencil"></i> Modificar
-                <% end %>
-              </div>
-            </div><br><br>
+              <% end %>
+            </div>
+          </div>
+          <br><br>
         </div>
-
 
 
       </div>
@@ -153,24 +185,24 @@
 
 <% content_for :javascript do %>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
 
-    $(function() {
+        $(function () {
 
-        $('.footable').footable();
-        $('.footable2').footable();
+            $('.footable').footable();
+            $('.footable2').footable();
 
-        $('.dataTables-example').dataTable({
-            "order": [[ 0, "desc" ]],
-            "dom": 'T<"clear">lfrtip',
-            "tableTools": {
-                "sSwfPath": "../../assets/dataTables/swf/copy_csv_xls_pdf.swf"
-            }
+            $('.dataTables-example').dataTable({
+                "order": [[0, "desc"]],
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "../../assets/dataTables/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+
         });
 
-    });
-
-</script>
+    </script>
 
 <% end %>

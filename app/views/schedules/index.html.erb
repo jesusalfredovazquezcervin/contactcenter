@@ -40,6 +40,7 @@
             <thead>
             <tr>
               <th>Nombre</th>
+              <th>Compañia</th>
               <th>Lunes</th>
               <th>Martes</th>
               <th>Miercoles</th>
@@ -55,10 +56,13 @@
             <tbody>
             <% @schedules.each do |schedule| %>
                 <tr>
+
                   <td>
                     <%= schedule.name %>
                   </td>
-
+                  <td>
+                    <%=  schedule.company.tradeName %>
+                  </td>
 
                   <td>
                     <%= schedule.mondayStart %>
