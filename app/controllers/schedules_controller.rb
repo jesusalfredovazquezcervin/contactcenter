@@ -42,6 +42,6 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
-      params.require(:schedule).permit(:mondayStart, :mondayEnd, :tuesdayStart, :tuesdayEnd, :wednesdayStart, :wednesdayEnd, :thursdayStart, :thursdayEnd, :saturdayStart, :saturdayEnd, :sundayStart, :sundayEnd)
+      params.require(:schedule).permit(:mondayStart, :mondayEnd, :tuesdayStart, :tuesdayEnd, :wednesdayStart, :wednesdayEnd, :thursdayStart, :thursdayEnd, :saturdayStart, :saturdayEnd, :sundayStart, :sundayEnd, :fridayStart, :fridayEnd, :name, :company_id)
     end
 end
