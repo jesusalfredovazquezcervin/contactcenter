@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620051548) do
+ActiveRecord::Schema.define(version: 20160622043555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20160620051548) do
     t.string   "tradeName"
     t.string   "businessName"
     t.string   "rfc"
-    t.string   "employees"
     t.string   "comercialBusiness"
     t.string   "sector"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "employees"
   end
 
   create_table "schedules", force: true do |t|
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20160620051548) do
   end
 
   add_index "schedules", ["company_id"], name: "index_schedules_on_company_id", using: :btree
+
+  create_table "tests", force: true do |t|
+    t.date     "dateEnd"
+    t.boolean  "gender"
+    t.time     "deadLine"
+    t.datetime "birth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
