@@ -1,6 +1,6 @@
 class Schedule < ActiveRecord::Base
   belongs_to :company
-  validates :company_id, :name,
+  validates :name,
       :presence => true
 
   validates :company,
