@@ -1,1 +1,1 @@
-json.extract! @schedule, :id, :mondayStart, :mondayEnd, :tuesdayStart, :tuesdayEnd, :wednesdayStart, :wednesdayEnd, :thursdayStart, :thursdayEnd, :saturdayStart, :saturdayEnd, :sundayStart, :sundayEnd, :created_at, :updated_at
+json.extract! @schedule, :id, :name, :mondayStart, :mondayEnd, :tuesdayStart, :tuesdayEnd, :wednesdayStart, :wednesdayEnd, :thursdayStart, :thursdayEnd, :saturdayStart, :saturdayEnd, :sundayStart, :sundayEnd, :created_at, :updated_at

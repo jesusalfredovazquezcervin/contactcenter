@@ -1,65 +1,224 @@
-<%= form_for(@schedule) do |f| %>
-  <% if @schedule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
 
-      <ul>
+  <%= form_for(@schedule, class: "form-horizontal") do |f| %>
+  <% if @schedule.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@schedule.errors.count, "error") %> no permitieron guardar el registro de schedule:</h2>
+
+    <ul>
       <% @schedule.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :mondayStart %><br>
-    <%= f.time_select :mondayStart %>
+        <div class="form-group">
+        
+
+                    <%= f.label :name , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :name , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :mondayStart , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :mondayStart, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :mondayEnd , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :mondayEnd, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :tuesdayStart , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :tuesdayStart, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :tuesdayEnd , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :tuesdayEnd, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :wednesdayStart , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :wednesdayStart, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :wednesdayEnd , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :wednesdayEnd, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :thursdayStart , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :thursdayStart, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :thursdayEnd , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :thursdayEnd, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :saturdayStart , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :saturdayStart, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :saturdayEnd , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :saturdayEnd, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :sundayStart , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :sundayStart, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+                    <%= f.label :sundayEnd , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%= f.text_field  :sundayEnd, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+
+              </div><br><div class="hr-line-dashed"></div>
+
+  
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <%= link_to schedules_path, class: "btn btn-outline btn-danger pull-left" do%>
+        <i class="fa fa-list-ol"></i> Cancelar
+      <% end %>
+      <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
+          <i class="fa fa-database"></i> Guardar
+      <% end %>
+    </div>
+
+
+
   </div>
-  <div class="field">
-    <%= f.label :mondayEnd %><br>
-    <%= f.time_select :mondayEnd %>
-  </div>
-  <div class="field">
-    <%= f.label :tuesdayStart %><br>
-    <%= f.time_select :tuesdayStart %>
-  </div>
-  <div class="field">
-    <%= f.label :tuesdayEnd %><br>
-    <%= f.time_select :tuesdayEnd %>
-  </div>
-  <div class="field">
-    <%= f.label :wednesdayStart %><br>
-    <%= f.time_select :wednesdayStart %>
-  </div>
-  <div class="field">
-    <%= f.label :wednesdayEnd %><br>
-    <%= f.time_select :wednesdayEnd %>
-  </div>
-  <div class="field">
-    <%= f.label :thursdayStart %><br>
-    <%= f.time_select :thursdayStart %>
-  </div>
-  <div class="field">
-    <%= f.label :thursdayEnd %><br>
-    <%= f.time_select :thursdayEnd %>
-  </div>
-  <div class="field">
-    <%= f.label :saturdayStart %><br>
-    <%= f.time_select :saturdayStart %>
-  </div>
-  <div class="field">
-    <%= f.label :saturdayEnd %><br>
-    <%= f.time_select :saturdayEnd %>
-  </div>
-  <div class="field">
-    <%= f.label :sundayStart %><br>
-    <%= f.text_field :sundayStart %>
-  </div>
-  <div class="field">
-    <%= f.label :sundayEnd %><br>
-    <%= f.time_select :sundayEnd %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <br><br>
+  <% end %>
+
+
+  <% content_for :javascript do %>
+
+      <script type="text/javascript">
+          $('.clockpicker').clockpicker();
+
+          $('#data_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true
+          });
+
+
+          var config = {
+              '.chosen-select'           : {},
+              '.chosen-select-deselect'  : {allow_single_deselect:true},
+              '.chosen-select-no-single' : {disable_search_threshold:10},
+              '.chosen-select-no-results': {no_results_text:'No existen registros!'},
+              '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+              $(selector).chosen(config[selector]);
+          }
+      </script>
+  <% end %>
