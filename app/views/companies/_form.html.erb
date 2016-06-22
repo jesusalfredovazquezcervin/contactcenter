@@ -67,7 +67,7 @@
         <%= f.label "Direccion", class: "col-lg-2 control-label" %>
         <div class="col-lg-6">
           <%= f.select :address_id, options_for_select(Address.all.collect { |address|
-                                                         [address.name, contact.id] }, @company.contact_id), {include_blank: "Sin contacto"}, { class:"chosen-select", style: "width:350px;"  } %>
+                                                         [address.name, address.id] }, @company.address_id), {include_blank: "Sin direccion"}, { class:"chosen-select", style: "width:350px;"  } %>
         </div>
       </div><br><div class="hr-line-dashed"></div>
 
