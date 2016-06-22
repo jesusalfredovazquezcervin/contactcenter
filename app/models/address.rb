@@ -1,4 +1,4 @@
 class Address < ActiveRecord::Base
   belongs_to :state
-  belongs_to :contact
+  belongs_to :company
 end
