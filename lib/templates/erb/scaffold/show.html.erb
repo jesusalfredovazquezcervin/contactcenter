@@ -57,12 +57,12 @@
 
             <div class="form-group">
               <div class="col-sm-6 col-sm-offset-2">
-
-                <%%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
-                <i class="fa fa-database"></i> Guardar
-                <%% end %>
                 <%%= link_to <%= index_helper %>_path, class: "btn btn-outline btn-danger pull-left" do%>
                 <i class="fa fa-list-ol"></i> Listado
+                <%% end %>
+
+                <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) , class: "btn btn-outline btn-primary pull-right" do %>
+                  <i class="fa fa-pencil"></i> Modificar
                 <%% end %>
               </div>
             </div><br><br>
