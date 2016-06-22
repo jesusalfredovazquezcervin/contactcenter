@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622144338) do
+ActiveRecord::Schema.define(version: 20160622181157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: true do |t|
+    t.string   "street"
+    t.string   "internal"
+    t.string   "external"
+    t.string   "suburb"
+    t.string   "municipality"
+    t.string   "location"
+    t.integer  "state_id"
+    t.string   "postalCode"
+    t.string   "city"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["contact_id"], name: "index_addresses_on_contact_id", using: :btree
+  add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
 
   create_table "companies", force: true do |t|
     t.string   "tradeName"
@@ -25,7 +43,23 @@ ActiveRecord::Schema.define(version: 20160622144338) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "employees"
+    t.integer  "contact_id"
   end
+
+  add_index "companies", ["contact_id"], name: "index_companies_on_contact_id", using: :btree
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "telephone"
+    t.string   "cellphone"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "company_id"
+  end
+
+  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
 
   create_table "schedules", force: true do |t|
     t.time     "mondayStart"
@@ -49,6 +83,12 @@ ActiveRecord::Schema.define(version: 20160622144338) do
   end
 
   add_index "schedules", ["company_id"], name: "index_schedules_on_company_id", using: :btree
+
+  create_table "states", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tests", force: true do |t|
     t.date     "dateEnd"
