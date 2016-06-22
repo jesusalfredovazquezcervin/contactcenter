@@ -83,12 +83,12 @@
             
             <div class="form-group">
               <div class="col-sm-6 col-sm-offset-2">
-
-                <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
-                <i class="fa fa-database"></i> Guardar
-                <% end %>
                 <%= link_to companies_path, class: "btn btn-outline btn-danger pull-left" do%>
                 <i class="fa fa-list-ol"></i> Listado
+                <% end %>
+
+                <%= link_to edit_company_path(@company) , class: "btn btn-outline btn-primary pull-right" do %>
+                  <i class="fa fa-pencil"></i> Modificar
                 <% end %>
               </div>
             </div><br><br>

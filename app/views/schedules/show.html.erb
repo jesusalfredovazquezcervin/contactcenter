@@ -39,91 +39,91 @@
         <div class="ibox-content">
 
                             <div class="form-group">
-                  <h4>string:</h4>
+
                           <h4>Name:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.name %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Mondaystart:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.mondayStart %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Mondayend:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.mondayEnd %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Tuesdaystart:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.tuesdayStart %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Tuesdayend:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.tuesdayEnd %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Wednesdaystart:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.wednesdayStart %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Wednesdayend:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.wednesdayEnd %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Thursdaystart:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.thursdayStart %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Thursdayend:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.thursdayEnd %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Saturdaystart:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.saturdayStart %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Saturdayend:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.saturdayEnd %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Sundaystart:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.sundayStart %>
                           </div><br>
                   </div>
                             <div class="form-group">
-                  <h4>time:</h4>
+
                           <h4>Sundayend:</h4>
                           <div class="col-sm-5">
                             <%= @schedule.sundayEnd %>
@@ -132,12 +132,12 @@
             
             <div class="form-group">
               <div class="col-sm-6 col-sm-offset-2">
-
-                <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
-                <i class="fa fa-database"></i> Guardar
-                <% end %>
                 <%= link_to schedules_path, class: "btn btn-outline btn-danger pull-left" do%>
                 <i class="fa fa-list-ol"></i> Listado
+                <% end %>
+
+                <%= link_to edit_schedule_path(@schedule) , class: "btn btn-outline btn-primary pull-right" do %>
+                  <i class="fa fa-pencil"></i> Modificar
                 <% end %>
               </div>
             </div><br><br>
