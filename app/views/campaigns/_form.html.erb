@@ -15,7 +15,7 @@
         <div class="form-group">
         
 
-                    <%= f.label :name , class: "col-lg-2 control-label"%>
+                    <%= f.label "Nombre", class: "col-lg-2 control-label"%>
                     <div class="col-lg-6">
                       <%= f.text_field :name , class: "form-control"%>
                     </div>
@@ -25,16 +25,18 @@
         <div class="form-group">
         
 
-                    <%= f.label :campaignType , class: "col-lg-2 control-label"%>
+                    <%= f.label "Tipo" , class: "col-lg-2 control-label"%>
                     <div class="col-lg-6">
-                      <%= f.text_field :campaignType , class: "form-control"%>
+                      <%= f.select :campaignType , options_for_select(Campaign::TYPE.collect { |type|
+                                                               [type.to_s.titleize] }), {required: true}, {class:"chosen-select", style: "width:350px;" } %>
+
                     </div>
                 
               </div><br><div class="hr-line-dashed"></div>
 
         <div class="form-group">
         
-                    <%= f.label :finish , class: "col-lg-2 control-label"%>
+                    <%= f.label "Finaliza" , class: "col-lg-2 control-label"%>
                     <div class="col-sm-5">
                       <div class="form-group" id="data_1">
                         <div class="input-group date">
@@ -68,15 +70,6 @@
   <% content_for :javascript do %>
 
       <script type="text/javascript">
-          $('.clockpicker').clockpicker();
-
-          $('#data_1 .input-group.date').datepicker({
-              todayBtn: "linked",
-              keyboardNavigation: false,
-              forceParse: false,
-              calendarWeeks: true,
-              autoclose: true
-          });
 
 
           var config = {
@@ -89,5 +82,15 @@
           for (var selector in config) {
               $(selector).chosen(config[selector]);
           }
+
+
+          $('#data_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true
+          });
+
       </script>
   <% end %>
