@@ -1,5 +1,5 @@
 class AddCompanyToAddress < ActiveRecord::Migration
   def change
-    add_reference :addresses, :address, index: true
+    add_reference :addresses, :company, index: true
   end
 end
