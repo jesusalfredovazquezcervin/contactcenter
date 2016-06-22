@@ -2,11 +2,27 @@ Myapp::Application.routes.draw do
 
 
 
+  resources :addresses
+
+  resources :contacts
+
+  resources :names
+
+  resources :states
+
+  resources :tests
+
   resources :companies
 
   resources :schedules
 
   Rails.application.routes.draw do
+  resources :addresses
+
+  resources :contacts
+
+  resources :states
+
   resources :companies
 
   resources :schedules

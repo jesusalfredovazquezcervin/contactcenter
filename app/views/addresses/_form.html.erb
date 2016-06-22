@@ -1,0 +1,156 @@
+
+  <%= form_for(@address, class: "form-horizontal") do |f| %>
+  <% if @address.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@address.errors.count, "error") %> no permitieron guardar el registro de address:</h2>
+
+    <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :street , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :street , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :internal , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :internal , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :external , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :external , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :suburb , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :suburb , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :municipality , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :municipality , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :location , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :location , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+           <%= f.label :state_id, class: "col-lg-2 control-label" %>
+           <div class="col-lg-6">
+             <%= f.select :state_id, options_for_select( State.all.collect { |state|
+                                                              [state.name, state.id] }, @address.state_id), {}, {class: "chosen-select", style: "width:350px;" } %>
+           </div><br><div class="hr-line-dashed"></div>
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :postalCode , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :postalCode , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+
+                    <%= f.label :city , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%= f.text_field :city , class: "form-control"%>
+                    </div>
+                
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+           <%= f.label :contact_id, class: "col-lg-2 control-label" %>
+           <div class="col-lg-6">
+             <%= f.select :contact_id, options_for_select( Contact.all.collect { |contact|
+                                                              [contact.name, contact.id] }, @address.contact_id), {}, {class: "chosen-select", style: "width:350px;" } %>
+           </div><br><div class="hr-line-dashed"></div>
+              </div><br><div class="hr-line-dashed"></div>
+
+  
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <%= link_to addresses_path, class: "btn btn-outline btn-danger pull-left" do%>
+        <i class="fa fa-list-ol"></i> Cancelar
+      <% end %>
+      <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
+          <i class="fa fa-database"></i> Guardar
+      <% end %>
+    </div>
+
+
+
+  </div>
+  <br><br>
+  <% end %>
+
+
+  <% content_for :javascript do %>
+
+      <script type="text/javascript">
+          $('.clockpicker').clockpicker();
+
+          $('#data_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true
+          });
+
+
+          var config = {
+              '.chosen-select'           : {},
+              '.chosen-select-deselect'  : {allow_single_deselect:true},
+              '.chosen-select-no-single' : {disable_search_threshold:10},
+              '.chosen-select-no-results': {no_results_text:'No existen registros!'},
+              '.chosen-select-width'     : {width:"95%"}
+          }
+          for (var selector in config) {
+              $(selector).chosen(config[selector]);
+          }
+      </script>
+  <% end %>

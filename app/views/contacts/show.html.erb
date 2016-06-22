@@ -1,0 +1,137 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Monstrando un registro de contacts </h2>
+
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', root_path %>
+      </li>
+      <li>
+        Catalogos
+      </li>
+      <li class="active">
+        <strong><%= link_to 'contact', contacts_path %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <%= link_to 'Nuevo Contact', new_contact_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <small class="m-l-sm">En esta pantalla se muestran los valores de un registro de contact</small>
+          <div class="ibox-tools">
+            Mostrando el registro: <strong> <%= @contact.id %></strong>
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="ibox-content">
+
+          <div class="form-group">
+
+            <h4>Name:</h4>
+
+            <div class="col-sm-5">
+              <%= @contact.name %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+            <h4>Compañia:</h4>
+            <div class="col-sm-5">
+              <%= @contact.try(:company).try(:tradeName)%>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Position:</h4>
+
+            <div class="col-sm-5">
+              <%= @contact.position %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Telephone:</h4>
+
+            <div class="col-sm-5">
+              <%= @contact.telephone %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Cellphone:</h4>
+
+            <div class="col-sm-5">
+              <%= @contact.cellphone %>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+
+            <h4>Email:</h4>
+
+            <div class="col-sm-5">
+              <%= @contact.email %>
+            </div>
+            <br>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-2">
+              <%= link_to contacts_path, class: "btn btn-outline btn-danger pull-left" do %>
+                  <i class="fa fa-list-ol"></i> Listado
+              <% end %>
+
+              <%= link_to edit_contact_path(@contact), class: "btn btn-outline btn-primary pull-right" do %>
+                  <i class="fa fa-pencil"></i> Modificar
+              <% end %>
+            </div>
+          </div>
+          <br><br>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+
+    <script type="text/javascript">
+
+
+        $(function () {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+            $('.dataTables-example').dataTable({
+                "order": [[0, "desc"]],
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "../../assets/dataTables/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+
+        });
+
+    </script>
+
+<% end %>
