@@ -48,7 +48,7 @@
           <div class="form-group">
             <h4>Compañia:</h4>
             <div class="col-sm-5">
-              <%= @schedule.company.tradeName%>
+              <%= @schedule.try(:company).try(:tradeName)%>
             </div>
             <br>
           </div>

@@ -61,7 +61,7 @@
                     <%= schedule.name %>
                   </td>
                   <td>
-                    <%=  schedule.company.tradeName %>
+                    <%=  schedule.try(:company).try(:tradeName) %>
                   </td>
 
                   <td>
