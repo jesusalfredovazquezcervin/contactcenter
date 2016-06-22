@@ -172,17 +172,6 @@
 <% content_for :javascript do %>
 
     <script type="text/javascript">
-        $('.clockpicker').clockpicker();
-
-        $('#data_1 .input-group.date').datepicker({
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            calendarWeeks: true,
-            autoclose: true
-        });
-
-
         var config = {
             '.chosen-select': {},
             '.chosen-select-deselect': {allow_single_deselect: true},
@@ -193,5 +182,15 @@
         for (var selector in config) {
             $(selector).chosen(config[selector]);
         }
+        $('.clockpicker').clockpicker();
+
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
     </script>
 <% end %>
