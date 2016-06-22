@@ -9,3 +9,4 @@
 //= require jquery-ui/jquery-ui.min.js
 //= require footable/footable.all.min.js
 //= require chosen/chosen.jquery.js
+//= require jasny/jasny-bootstrap.min.js

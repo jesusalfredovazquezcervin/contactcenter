@@ -15,31 +15,38 @@
         <div class="form-group">
                    <%= f.label :tradeName , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
-             <%= f.text_field :tradeName , class: "form-control"%>
+             <%= f.text_field :tradeName , class: "form-control", required: true%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
                    <%= f.label :businessName , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
-             <%= f.text_field :businessName , class: "form-control"%>
+             <%= f.text_field :businessName , class: "form-control", required: true%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
                    <%= f.label :rfc , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
-             <%= f.text_field :rfc , class: "form-control"%>
-           </div><br><div class="hr-line-dashed"></div>
-              </div>
+             <%= f.text_field :rfc , class: "form-control", required: true, :data => {:mask=> 'aaaa-999999-***'}, placeholder: ""%>
+             <span class="help-block">SAOK-790530-QZ2</span>
+           </div>
+
+
+
+
+
+
+        </div><br><br><div class="hr-line-dashed"></div>
         <div class="form-group">
                    <%= f.label :employees , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
-             <%= f.text_field :employees , class: "form-control"%>
+             <%= f.number_field :employees , class: "form-control", required: true, min:1, max:9999%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
                    <%= f.label :comercialBusiness , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
-             <%= f.text_field :comercialBusiness , class: "form-control"%>
+             <%= f.text_field :comercialBusiness , class: "form-control", required: true%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
