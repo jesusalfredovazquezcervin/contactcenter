@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   has_one :schedule
   has_one :contact
+  has_one :address
   validates :tradeName, :rfc, :employees, :comercialBusiness,
             presence: true
   validates :businessName,
