@@ -15,17 +15,20 @@
   <% attributes.each do |attribute| -%>
       <div class="form-group">
         <% if attribute.password_digest? -%>
-         <%%= f.label :password, class: "col-lg-2 control-label" %>
-         <div class="col-lg-6">
-            <%%= f.password_field :password, class: "form-control" %>
-         </div><br><div class="hr-line-dashed"></div>
-      </div>
-      <div>
-          <%%= f.label :password_confirmation, class: "col-lg-2 control-label" %>
-          <div class="col-lg-6">
-              <%%= f.password_field :password_confirmation, class: "form-control" %>
-          </div><br><div class="hr-line-dashed"></div>
+             <%%= f.label :password, class: "col-lg-2 control-label" %>
+             <div class="col-lg-6">
+                <%%= f.password_field :password, class: "form-control" %>
+             </div><br><div class="hr-line-dashed"></div>
+          </div>
+
+           <div>
+              <%%= f.label :password_confirmation, class: "col-lg-2 control-label" %>
+              <div class="col-lg-6">
+                  <%%= f.password_field :password_confirmation, class: "form-control" %>
+              </div><br><div class="hr-line-dashed"></div>
+
         <% else -%>
+
           <%- if attribute.reference? -%>
            <%%= f.label :<%= attribute.column_name %>, class: "col-lg-2 control-label" %>
            <div class="col-lg-6">
@@ -33,13 +36,46 @@
                                                               [<%= attribute.name %>.name, <%= attribute.name %>.id] }, @<%= singular_table_name %>.<%= attribute.column_name %>), {}, {class: "chosen-select", style: "width:350px;" } %>
            </div><br><div class="hr-line-dashed"></div>
           <%- else -%>
-           <%%= f.label :<%= attribute.name %> , class: "col-lg-2 control-label"%>
-           <div class="col-lg-6">
-             <%%= f.<%= attribute.field_type %> :<%= attribute.name %> , class: "form-control"%>
-           </div><br><div class="hr-line-dashed"></div>
+                <%- case attribute.type-%>
+                  <%- when :date -%>
+                    <%%= f.label :<%= attribute.name %> , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5">
+                      <div class="form-group" id="data_1">
+                        <div class="input-group date">
+                          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                          <%%= f.text_field :<%= attribute.name %> , class: "form-control"%>
+                        </div>
+                      </div>
+                    </div>
+
+                <%- when :time -%>
+                    <%%= f.label :<%= attribute.name %> , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5" style="width: 200px">
+                      <div class="input-group clockpicker" data-autoclose="true" >
+                        <%%= f.text_field  :<%= attribute.name %>, class: "form-control"%>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                      </div>
+                    </div>
+
+                <%- when :boolean -%>
+
+                    <%%= f.label :<%= attribute.name %> , class: "col-lg-2 control-label"%>
+                    <div class="col-sm-5">
+                      <div class="checkbox checkbox-success">
+                        <%%= f.check_box :<%= attribute.name %> %>
+                        <%%= f.label " " %>
+                      </div>
+                    </div>
+                <%else%>
+                    <%%= f.label :<%= attribute.name %> , class: "col-lg-2 control-label"%>
+                    <div class="col-lg-6">
+                      <%%= f.<%= attribute.field_type %> :<%= attribute.name %> , class: "form-control"%>
+                    </div>
+                <%end%>
           <%- end -%>
         <% end -%>
-      </div>
+      </div><br><div class="hr-line-dashed"></div>
+
   <% end -%>
 
   <div class="form-group">
@@ -62,6 +98,15 @@
   <%% content_for :javascript do %>
 
       <script type="text/javascript">
+          $('.clockpicker').clockpicker();
+
+          $('#data_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true
+          });
 
 
           var config = {
