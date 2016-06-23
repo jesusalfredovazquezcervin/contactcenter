@@ -2,6 +2,10 @@ Myapp::Application.routes.draw do
 
 
 
+  resources :details
+
+  resources :calls
+
   resources :campaigns
 
   resources :addresses
@@ -19,6 +23,8 @@ Myapp::Application.routes.draw do
   resources :schedules
 
   Rails.application.routes.draw do
+  resources :details
+
   resources :campaigns
 
   resources :addresses

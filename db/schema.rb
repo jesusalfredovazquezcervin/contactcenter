@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622212500) do
+ActiveRecord::Schema.define(version: 20160623005847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 20160622212500) do
 
   add_index "addresses", ["company_id"], name: "index_addresses_on_company_id", using: :btree
   add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
+
+  create_table "calls", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "campaign_id"
+    t.string   "result"
+    t.string   "status"
+    t.datetime "later"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "calls", ["campaign_id"], name: "index_calls_on_campaign_id", using: :btree
+  add_index "calls", ["company_id"], name: "index_calls_on_company_id", using: :btree
+  add_index "calls", ["user_id"], name: "index_calls_on_user_id", using: :btree
 
   create_table "campaigns", force: true do |t|
     t.string   "name"
@@ -73,6 +88,18 @@ ActiveRecord::Schema.define(version: 20160622212500) do
   end
 
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
+
+  create_table "details", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "campaign_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "details", ["campaign_id"], name: "index_details_on_campaign_id", using: :btree
+  add_index "details", ["company_id"], name: "index_details_on_company_id", using: :btree
+  add_index "details", ["user_id"], name: "index_details_on_user_id", using: :btree
 
   create_table "schedules", force: true do |t|
     t.time     "mondayStart"
