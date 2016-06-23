@@ -34,7 +34,7 @@
            <div class="col-lg-6">
              <%%= f.select :<%= attribute.column_name %>, options_for_select( <%= attribute.name.capitalize %>.all.collect { |<%= attribute.name %>|
                                                               [<%= attribute.name %>.name, <%= attribute.name %>.id] }, @<%= singular_table_name %>.<%= attribute.column_name %>), {}, {class: "chosen-select", style: "width:350px;" } %>
-           </div><br><div class="hr-line-dashed"></div>
+           </div>
           <%- else -%>
                 <%- case attribute.type-%>
                   <%- when :date -%>
