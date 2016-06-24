@@ -14,7 +14,10 @@ class CallsController < ApplicationController
 
   def new
     @call = Call.new
-    respond_with(@call)
+    @call.company_id = params[:company_id]
+    @call.campaign_id = params[:id]
+    @campaign = Campaign.find_by_id params[:id]
+    #@company = Company.find_by_id params[:company_id]
   end
 
   def edit
@@ -35,13 +38,16 @@ class CallsController < ApplicationController
     @call.destroy
     respond_with(@call)
   end
+def send
 
+end
   private
     def set_call
       @call = Call.find(params[:id])
     end
 
     def call_params
-      params.require(:call).permit(:company_id, :campaign_id, :result, :status, :later, :user_id)
+      params[:call][:user_id] = current_user.id
+      params.require(:call).permit(:company_id, :campaign_id, :result, :status, :later, :user_id, :status)
     end
 end

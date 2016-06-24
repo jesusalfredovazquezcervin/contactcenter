@@ -4,7 +4,8 @@ class DetailsController < ApplicationController
   respond_to :html
 
   def index
-    @details = Detail.all
+    @details = Detail.search(params, current_user)
+    @campaign = Campaign.find_by_id params[:id]
     respond_with(@details)
   end
 
@@ -33,9 +34,10 @@ class DetailsController < ApplicationController
 
   def destroy
     @detail.destroy
-    respond_with(@detail)
+    respond_to do |format|
+        format.html { redirect_to({ action: 'index', id: @detail.campaign_id }, notice: "El registro ha sido eliminado exitosamente") }
+    end
   end
-
   private
     def set_detail
       @detail = Detail.find(params[:id])

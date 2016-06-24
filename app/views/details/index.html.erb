@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
-    <h2>Listado de details </h2>
+    <h2>Detalle de la campaña: <strong><%=@campaign.name%> - <%=@campaign.campaignType.titleize%></strong>  </h2>
 
     <ol class="breadcrumb">
       <li>
@@ -18,13 +18,46 @@
 
   </div>
 </div>
+<br>
+
+<div class="ibox-content">
+  <h2 >
+    Panel de consulta<br/>
+  </h2>
+  <br>
+  <%= form_tag details_path, :method => 'get', :class=> "form-horizontal"   do %>
+
+      <div class="form-group">
+        <div class="col-lg-2">
+          <%= number_field_tag :employees, params[:employees], min:1, max:9999, placeholder: "Empleados", class: "form-control" %>
+        </div>
+        <div class="col-lg-2">
+          <%= select_tag :state, options_from_collection_for_select(State.all.collect, "id", "name"),{class: "chosen-select", include_blank: true, prompt: "Seleccione estado"}  %>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-2 ">
+          <%= button_tag(type: "submit", class: "btn btn-outline btn-warning") do %>
+              <i class="fa fa-search"></i> &nbsp;Buscar&nbsp;
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+
+
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <%= link_to 'Nuevo Detail', new_detail_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <small class="m-l-sm">En esta pantalla se muestran los registros de  detail</small>
+          <button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#myModal2">
+            Buscar compañias</button>
+
+          <small class="m-l-sm">En esta pantalla se muestran los registros del detalle de la campaña</small>
           <div class="ibox-tools">
               Total registros: <%= @details.count %>
             <a class="collapse-link">
@@ -39,9 +72,10 @@
           <table class="table table-striped table-bordered table-hover dataTables-example">
               <thead>
               <tr>
-                                    <th>Company</th>
-                                    <th>Campaign</th>
-                                    <th>User</th>
+                <th>ID</th>
+                <th>Campaña</th>
+                <th>Compañia</th>
+                <th>Agregado por</th>
                                 <th>&nbsp;&nbsp;Acciones&nbsp;&nbsp;</th>
 
               </tr>
@@ -50,10 +84,11 @@
               <tbody>
               <% @details.each do |detail| %>
               <tr>
+                <td><%= detail.id %> </td>
                                     <td>
 
 
-                        <%= Company.find_by_id(detail.company_id).name %>
+                        <%= Company.find_by_id(detail.company_id).tradeName %>
                     </td>
 
 
@@ -80,7 +115,17 @@
                   <% end %>&nbsp;
                   <%= link_to detail, method: :delete,  data: { confirm: '¿Está seguro, se eliminara permanentemente?'} do %>
                       <i class="fa fa-trash-o" title="Eliminar"></i>
-                  <% end %>
+                  <% end %>&nbsp;&nbsp;&nbsp;
+                                  <%= link_to new_call_path(:id=> detail.campaign_id, :id_company => detail.company_id) do %>
+                                      <i class="fa fa-hand-o-right" title="Dar seguimiento"></i>
+                                  <% end %>&nbsp;
+
+
+                                  <%= link_to send_catalog_path(:id=> detail.company_id) do %>
+                                      <i class="fa fa-file-pdf-o" title="Enviar catalogo"></i>
+                                  <% end %>&nbsp;
+
+
 
                 </td>
               </tr>
@@ -95,12 +140,24 @@
     </div>
   </div>
 </div>
+<div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+  <%= render 'details/search' %>
+</div>
 
 
 <% content_for :javascript do %>
 
     <script type="text/javascript">
-
+        var config = {
+            '.chosen-select'           : {},
+            '.chosen-select-deselect'  : {allow_single_deselect:true},
+            '.chosen-select-no-single' : {disable_search_threshold:10},
+            '.chosen-select-no-results': {no_results_text:'No existen registros!'},
+            '.chosen-select-width'     : {width:"95%"}
+        };
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
 
         $(function() {
 
@@ -108,7 +165,7 @@
             $('.footable2').footable();
 
             $('.dataTables-example').dataTable({
-                "order": [[ 0, "desc" ]],
+                "order": [[ 2, "asc" ]],
                 "dom": 'T<"clear">lfrtip',
                 "tableTools": {
                     "sSwfPath": "../../assets/dataTables/swf/copy_csv_xls_pdf.swf"
