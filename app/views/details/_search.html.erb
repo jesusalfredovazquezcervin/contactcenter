@@ -1,0 +1,53 @@
+<div class="modal-dialog">
+  <div class="modal-content animated flipInX">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+      <h4 class="modal-title">Actualizar TC</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_for @cliente, url: update_tipocambio_path, method: "patch", class: 'form-horizontal'  do |f| %>
+          <% if @cliente.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= @cliente.errors.count %> error(es) no permitieron guardar el registro:</h2>
+
+                <ul>
+                  <% @cliente.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+          <%= f.hidden_field :id, :value => @cliente.id %>
+          <div class="form-group">
+            <div class="form-group">
+              <%= f.label "Tipo Cambio" , class: 'col-sm-2 control-label'%>
+              <div class="col-sm-5">
+                <%= f.text_field :tipoCambio, class: 'form-control', :required => true, :data => {:mask=> '99.9999', :placeholder =>""}%>
+
+
+              </div>
+            </div>
+
+            <br><br>
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+            <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                <i class="fa fa-database"></i> Guardar
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

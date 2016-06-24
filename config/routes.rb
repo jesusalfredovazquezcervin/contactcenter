@@ -1,6 +1,12 @@
 Myapp::Application.routes.draw do
 
+ get "send/:id", to: "calls#send", as: "send_catalog"
+  get "new/:id/:id_company", to: "calls#new", as: 'new_call'
 
+  get "list/:id", to: "companies#list", as: 'list_companies'
+
+
+  get "index/:id", to: "details#index", as: 'details'
 
   resources :details
 
