@@ -1,0 +1,23 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+
+      <img alt="image"  src="<%= image_path('logofresno.png') %>">
+
+    </div>
+    <div class="hr-line-dashed"></div>
+    <h2>Centro de Administracion Llamadas de Clientes</h2>
+
+
+    <div class="hr-line-solid"></div>
+    <h3>Su satisfaccion... nuestro compromiso</h3>
+    <small>Fresno &copy; 2016 - <%= Date.today.year %> </small>
+    <br><br><br>
+    <% if !user_signed_in? %>
+        <%= link_to 'Entrar',new_user_session_path, class: 'btn btn-sm btn-primary btn-block'%>
+    <%end%>
+  </div>
+</div>
+
+
+
