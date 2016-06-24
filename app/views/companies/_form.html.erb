@@ -2,7 +2,7 @@
   <%= form_for(@company, class: "form-horizontal") do |f| %>
   <% if @company.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@company.errors.count, "error") %> no permitieron guardar el registro de company:</h2>
+    <h2><%= pluralize(@company.errors.count, "error") %> no permitieron guardar el registro de compañia:</h2>
 
     <ul>
       <% @company.errors.full_messages.each do |msg| %>
@@ -13,19 +13,19 @@
   <% end %>
 
         <div class="form-group">
-                   <%= f.label :tradeName , class: "col-lg-2 control-label"%>
+                   <%= f.label "Nombre comercial" , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
              <%= f.text_field :tradeName , class: "form-control", required: true%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
-                   <%= f.label :businessName , class: "col-lg-2 control-label"%>
+                   <%= f.label "Razon social" , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
              <%= f.text_field :businessName , class: "form-control", required: true%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
-                   <%= f.label :rfc , class: "col-lg-2 control-label"%>
+                   <%= f.label "RFC" , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
              <%= f.text_field :rfc , class: "form-control", required: true, :data => {:mask=> 'aaaa-999999-***'}, placeholder: ""%>
            </div>
@@ -37,17 +37,23 @@
 
         </div><br><br><div class="hr-line-dashed"></div>
         <div class="form-group">
-                   <%= f.label :employees , class: "col-lg-2 control-label"%>
+                   <%= f.label "Cantidad empleados", class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
              <%= f.number_field :employees , class: "form-control", required: true, min:1, max:9999%>
            </div><br><div class="hr-line-dashed"></div>
               </div>
         <div class="form-group">
-                   <%= f.label :comercialBusiness , class: "col-lg-2 control-label"%>
-           <div class="col-lg-6">
-             <%= f.text_field :comercialBusiness , class: "form-control", required: true%>
-           </div><br><div class="hr-line-dashed"></div>
+                   <%= f.label "Giro de negocio" , class: "col-lg-2 control-label"%>
+          <div class="col-lg-6">
+            <%= f.select :comercialBusiness , options_for_select(Company::BUSINESS.collect { |origin|
+                                                       [origin.to_s] }), {required: true}, {class:"chosen-select", style: "width:350px;" } %>
+
+          </div>
+          <br><div class="hr-line-dashed"></div>
+
               </div>
+
+
         <div class="form-group">
                    <%= f.label :sector , class: "col-lg-2 control-label"%>
            <div class="col-lg-6">
@@ -67,12 +73,24 @@
         <%= f.label "Direccion", class: "col-lg-2 control-label" %>
         <div class="col-lg-6">
           <%= f.select :address_id, options_for_select(Address.all.collect { |address|
-                                                         [address.name, address.id] }, @company.address_id), {include_blank: "Sin direccion"}, { class:"chosen-select", style: "width:350px;"  } %>
+                                                         [address.id.to_s << "-" <<  address.name, address.id] }, @company.address_id), {include_blank: "Sin direccion"}, { class:"chosen-select", style: "width:350px;"  } %>
         </div>
       </div><br><div class="hr-line-dashed"></div>
 
-  
-  <div class="form-group">
+      <div class="form-group">
+        <%= f.label "Procedencia" , class: "col-lg-2 control-label"%>
+        <div class="col-lg-6">
+          <%= f.select :origin, options_for_select(Company::ORIGIN.collect { |origin|
+                                                            [origin.to_s] }), {required: true}, {class:"chosen-select", style: "width:350px;" } %>
+
+        </div>
+        <br><div class="hr-line-dashed"></div>
+      </div>
+
+
+
+
+      <div class="form-group">
     <div class="col-sm-6 col-sm-offset-2">
       <%= link_to companies_path, class: "btn btn-outline btn-danger pull-left" do%>
         <i class="fa fa-list-ol"></i> Cancelar
