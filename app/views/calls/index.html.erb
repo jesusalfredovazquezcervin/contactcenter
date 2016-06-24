@@ -23,7 +23,6 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <%= link_to 'Nuevo Call', new_call_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <small class="m-l-sm">En esta pantalla se muestran los registros de  call</small>
           <div class="ibox-tools">
               Total registros: <%= @calls.count %>
@@ -56,7 +55,7 @@
                                     <td>
 
 
-                        <%= Company.find_by_id(call.company_id).name %>
+                        <%= Company.find_by_id(call.company_id).tradeName %>
                     </td>
 
 
