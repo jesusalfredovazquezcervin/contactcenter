@@ -38,9 +38,6 @@ class CallsController < ApplicationController
     @call.destroy
     respond_with(@call)
   end
-def send
-
-end
   private
     def set_call
       @call = Call.find(params[:id])
