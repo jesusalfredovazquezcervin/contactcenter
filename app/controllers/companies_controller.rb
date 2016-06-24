@@ -35,13 +35,17 @@ class CompaniesController < ApplicationController
     @company.destroy
     respond_with(@company)
   end
-
+  def list
+    @companies = Company.all
+    @campaign = Campaign.find_by_id params[:id]
+    respond_with(@companies)
+  end
   private
     def set_company
       @company = Company.find(params[:id])
     end
 
     def company_params
-      params.require(:company).permit(:tradeName, :businessName, :rfc, :employees, :comercialBusiness, :sector, :schedule_id, :contact_id, :address_id)
+      params.require(:company).permit(:tradeName, :businessName, :rfc, :employees, :comercialBusiness, :sector, :schedule_id, :contact_id, :address_id, :origin)
     end
 end
