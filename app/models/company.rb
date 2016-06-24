@@ -16,4 +16,8 @@ class Company < ActiveRecord::Base
     rfc.upcase!
   end
 
+  ORIGIN = %w[internet catalogo publicidad_exterior recomendacion periodico revista]
+  BUSINESS =%w[Farmacia Papelería Supermercado Lavandería Restaurante Tintorería Autolavado Taller_Mecánico Mueblería Fundidoras]
+
+
 end
