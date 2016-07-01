@@ -93,8 +93,10 @@
                   <% end %>&nbsp;
                   <%= link_to company, method: :delete,  data: { confirm: '¿Está seguro, se eliminara permanentemente?'} do %>
                       <i class="fa fa-trash-o" title="Eliminar"></i>
+                  <% end %> &nbsp;
+                  <%= link_to quiz_new_path(company) do %>
+                      <i class="fa fa-tachometer" title="Encuesta"></i>
                   <% end %>
-
                 </td>
               </tr>
               <% end %>
