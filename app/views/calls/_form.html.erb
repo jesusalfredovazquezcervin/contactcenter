@@ -74,9 +74,14 @@
           <i class="fa fa-database"></i> Guardar
       <% end %>
 
-      <%= link_to calls_path, class: "btn btn-outline btn-danger pull-right btn-lg" do%>
-          <i class="fa fa-file-pdf-o"></i> Enviar catalogo
+
+      <%= button_tag(type: 'submit', class: "btn btn-outline btn-success pull-right", :value => "enviar") do %>
+          <i class="fa fa-database"></i> Guardar + <i class="fa fa-file-pdf-o"></i> Catalogo
       <% end %>
+
+
+
+
 
     </div>
 
