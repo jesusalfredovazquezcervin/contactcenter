@@ -63,3 +63,7 @@ group :runtime, :test do
   #la pide exception_notification
   #gem 'activesupport', '~> 4.2', '>= 4.2.6'
 end
+
+gem 'actionpack'
+gem 'actionmailer', '~> 4.1.2'
+gem 'roadie'
