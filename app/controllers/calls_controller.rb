@@ -26,6 +26,8 @@ class CallsController < ApplicationController
   def create
     @call = Call.new(call_params)
     @call.save
+
+    ClientMailer.deliver_document(current_user, @call.company.contact.email ,"Catalogo").deliver if params[:button] == "enviar"
     respond_with(@call)
   end
 
