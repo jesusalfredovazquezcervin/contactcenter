@@ -41,9 +41,23 @@
             </ul>
           </li>
           <li>
-            <%= link_to campaigns_path do %>
-                <i class="fa fa-phone"></i> <span class="nav-label">Campañas</span>
-            <% end %>
+            <a href="#"><i class="fa fa-phone"></i> <span class="nav-label">Campañas</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><%= link_to "Nueva campaña  +", new_campaign_path%></li>
+              <li><%= link_to "Todas las campañas", campaigns_path%></li>
+              <% Campaign.all.collect do |campaign|%>
+                  <li class=""><%= link_to campaign.name, details_path(campaign)%></li>
+              <%end%>
+            </ul>
+
+
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-leaf"></i> <span class="nav-label">Operativo</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li><%= link_to "Encuestas", quizzes_path%></li>
+              <li><%= link_to "Graficas", chart_path%></li>
+            </ul>
           </li>
 
         </ul>
