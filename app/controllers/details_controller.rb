@@ -38,6 +38,14 @@ class DetailsController < ApplicationController
         format.html { redirect_to({ action: 'index', id: @detail.campaign_id }, notice: "El registro ha sido eliminado exitosamente") }
     end
   end
+  def send_catalog
+    detail=Detail.find_by_id(params[:id])
+    respond_to do |format|
+      ClientMailer.deliver_document(current_user, detail.company.contact.email  ,"Catalogo").deliver
+      format.html { redirect_to({action: "index", id: detail.campaign.id}, notice: "Se ha enviado el catalogo exitosamente") }
+    end
+
+  end
   private
     def set_detail
       @detail = Detail.find(params[:id])
