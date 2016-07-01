@@ -1,5 +1,11 @@
 Myapp::Application.routes.draw do
 
+  resources :quizzes
+  get "chart", to: "quizzes#chart", as: 'chart'
+
+  get "new/(:id)", to: "quizzes#new", as: 'quiz_new'
+
+  get "send_catalog/:id", to: "details#send_catalog", as: 'send_catalog'
 
   get "new/:id/:id_company", to: "calls#new", as: 'new_call'
 
@@ -29,6 +35,8 @@ Myapp::Application.routes.draw do
   resources :schedules
 
   Rails.application.routes.draw do
+  resources :quizzes
+
   resources :details
 
   resources :campaigns
