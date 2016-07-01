@@ -1,0 +1,126 @@
+
+  <%= form_for(@quiz, class: "form-horizontal") do |f| %>
+  <% if @quiz.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@quiz.errors.count, "error") %> no permitieron guardar el registro de quiz:</h2>
+
+    <ul>
+      <% @quiz.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+        <div class="form-group">
+        
+           <%= f.label "Vendedor", class: "col-lg-2 control-label" %>
+           <div class="col-lg-6">
+             <%= f.select :user_id, options_for_select( User.all.collect { |user|
+                                                              [user.name, user.id] }, @quiz.user_id), {}, {class: "chosen-select", style: "width:350px;" } %>
+           </div>
+              </div><br><div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+        
+           <%= f.label "Compañia", class: "col-lg-2 control-label" %>
+           <div class="col-lg-6">
+             <%= f.select :company_id, options_for_select( Company.all.collect { |company|
+                                                              [company.tradeName, company.id] }, @quiz.company_id), {}, {class: "chosen-select", style: "width:350px;" } %>
+           </div>
+        </div><br><div class="hr-line-dashed"></div>
+      <br>
+
+        <div class="form-group">
+          <label>1.- En general, ¿con qué frecuencia utilizas nuestro servicio?</label><br>
+          <%= f.radio_button :question1, '1', checked: true %> Casi siempre &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.radio_button :question1, '2', class:"radio radio-info radio-inline" %> Frecuentemente &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.radio_button :question1, '3',class:"radio radio-info radio-inline" %> A veces &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.radio_button :question1, '4', class:"radio radio-info radio-inline" %> Rara vez &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= f.radio_button :question1, '5', class:"radio radio-info radio-inline" %> Casi nunca
+        </div><br><div class="hr-line-dashed"></div>
+
+      <div class="form-group">
+        <label>2.-En general, ¿qué tan rápido consideras que es nuestro servicio?</label><br>
+        <%= f.radio_button :question2, '1', checked: true %> Extremadamente rapida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question2, '2', class:"radio radio-info radio-inline" %> Muy rapido &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question2, '3',class:"radio radio-info radio-inline" %> Moderadamente rapido &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question2, '4', class:"radio radio-info radio-inline" %> Poco rapido &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question2, '5', class:"radio radio-info radio-inline" %> Nada rapido
+      </div><br><div class="hr-line-dashed"></div>
+
+      <div class="form-group">
+        <label>3.-¿Cuál es la probabilidad de que vuelvas a usar nuestro servicio?</label><br>
+        <%= f.radio_button :question3, '1', checked: true %> Extremadamente probable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question3, '2', class:"radio radio-info radio-inline" %> Bastante probable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question3, '3',class:"radio radio-info radio-inline" %> Algo probable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question3, '4', class:"radio radio-info radio-inline" %> Poco probable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question3, '5', class:"radio radio-info radio-inline" %> Nada probable
+      </div><br><div class="hr-line-dashed"></div>
+
+      <div class="form-group">
+        <label>4. ¿Crees que el precio que pagas por nuestro servicio es alto, bajo o justo?</label><br>
+        <%= f.radio_button :question4, '1', checked: true %> Extremadamente alto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question4, '2', class:"radio radio-info radio-inline" %> Muy alto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question4, '3',class:"radio radio-info radio-inline" %> Ni alto ni bajo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question4, '4', class:"radio radio-info radio-inline" %> Muy bajo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question4, '5', class:"radio radio-info radio-inline" %> Extremadamente bajo
+      </div><br><div class="hr-line-dashed"></div>
+
+
+      <div class="form-group">
+        <label>5. En general, ¿Cómo calificarías las políticas de garantía de nuestra compañía?</label><br>
+        <%= f.radio_button :question5, '1', checked: true %> Excelentes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question5, '2', class:"radio radio-info radio-inline" %> Buenas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question5, '3',class:"radio radio-info radio-inline" %> Ni buenas ni malas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question5, '4', class:"radio radio-info radio-inline" %> Malas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :question5, '5', class:"radio radio-info radio-inline" %> Malisimas
+      </div><br><div class="hr-line-dashed"></div>
+
+
+  
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <%= link_to quizzes_path, class: "btn btn-outline btn-danger pull-left" do%>
+        <i class="fa fa-list-ol"></i> Cancelar
+      <% end %>
+      <%= button_tag(type: 'submit', class: "btn btn-outline btn-primary pull-right") do %>
+          <i class="fa fa-database"></i> Guardar
+      <% end %>
+    </div>
+
+
+
+  </div>
+  <br><br>
+  <% end %>
+
+
+  <% content_for :javascript do %>
+
+      <script type="text/javascript">
+
+
+          var config = {
+              '.chosen-select'           : {},
+              '.chosen-select-deselect'  : {allow_single_deselect:true},
+              '.chosen-select-no-single' : {disable_search_threshold:10},
+              '.chosen-select-no-results': {no_results_text:'No existen registros!'},
+              '.chosen-select-width'     : {width:"95%"}
+          };
+          for (var selector in config) {
+              $(selector).chosen(config[selector]);
+          }
+
+          $('.clockpicker').clockpicker();
+
+          $('#data_1 .input-group.date').datepicker({
+              todayBtn: "linked",
+              keyboardNavigation: false,
+              forceParse: false,
+              calendarWeeks: true,
+              autoclose: true
+          });
+
+      </script>
+  <% end %>

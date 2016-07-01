@@ -1,0 +1,111 @@
+
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Grafica de encuestas</h2>
+
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', root_path  %>
+      </li>
+      <li>
+        Operativo
+      </li>
+      <li class="active">
+        <strong><%= link_to 'Encuesta', quizzes_path  %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <%= link_to 'Nueva Encuesta', new_quiz_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <small class="m-l-sm">En esta pantalla se muestra una grafica de las encuestas de saltisfaccion</small>
+          <div class="ibox-tools">
+
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+
+
+          <div class="flot-chart">
+            <div class="flot-chart-pie-content" id="flot-pie-chart"></div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+
+    <script type="text/javascript">
+
+
+
+        var data = [{
+            label: "Frecuencia servicio",
+            data: 21,
+            color: "red",
+        }, {
+            label: "Rapidez",
+            data: 3,
+            color: "black",
+        }, {
+            label: "Probabilidad",
+            data: 15,
+            color: "yellow",
+        }, {
+            label: "Precio",
+            data: 42,
+            color: "gray",
+
+        }, {
+            label: "Politicas",
+            data: 19,
+            color: "green",
+
+        }
+        ];
+
+        var plotObj = $.plot($("#flot-pie-chart"), data, {
+            series: {
+                pie: {
+                    show: true
+                }
+            },
+            grid: {
+                hoverable: true
+            },
+            tooltip: true,
+            tooltipOpts: {
+                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                shifts: {
+                    x: 20,
+                    y: 0
+                },
+                defaultTheme: false
+            }
+        })
+
+    </script>
+
+<% end %>
+

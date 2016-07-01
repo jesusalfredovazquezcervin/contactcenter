@@ -1,0 +1,189 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Monstrando un registro de Encuesta </h2>
+
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', root_path  %>
+      </li>
+      <li>
+        Operativo
+      </li>
+      <li class="active">
+        <strong><%= link_to 'Encuesta', quizzes_path  %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <%= link_to 'Nueva Encuesta', new_quiz_path, class: "btn btn-outline btn-warning" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <small class="m-l-sm">En esta pantalla se muestran los valores de un registro de encuesta</small>
+          <div class="ibox-tools">
+            Mostrando el registro: <strong> <%= @quiz.id%></strong>
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="ibox-content">
+
+                            <div class="form-group">
+
+                      <h4>Vendedor:</h4>
+                      <div class="col-sm-5">
+                        <%= User.find_by_id(@quiz.user_id).name %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+                            <div class="form-group">
+
+                      <h4>Compañia:</h4>
+                      <div class="col-sm-5">
+                        <%= Company.find_by_id(@quiz.company_id).tradeName %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>¿Con qué frecuencia utilizas nuestro servicio?</h4>
+                          <div class="col-sm-5">
+                            <%case  @quiz.question1 %>
+                            <%when 1 %>
+                                <%="Casi siempre"%>
+                            <%when 2 %>
+                                <%="Frecuentemente"%>
+                            <%when 3 %>
+                                <%="A veces"%>
+                            <%when 4 %>
+                                <%="Rara vez"%>
+                            <%when 5 %>
+                                <%="Casi nunca"%>
+                            <% end %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>¿Qué tan rápido consideras que es nuestro servicio?</h4>
+                          <div class="col-sm-5">
+                            <%case  @quiz.question2 %>
+                            <%when 1 %>
+                                <%="Extremo rapido"%>
+                            <%when 2 %>
+                                <%="Muy rapido"%>
+                            <%when 3 %>
+                                <%="Moderado rapido"%>
+                            <%when 4 %>
+                                <%="Poco rapido"%>
+                            <%when 5 %>
+                                <%="Nada rapido"%>
+                            <% end %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>3. ¿Cuál es la probabilidad de que vuelvas a usar nuestro servicio?</h4>
+                          <div class="col-sm-5">
+                            <%case  @quiz.question3 %>
+                            <%when 1 %>
+                                <%="Extremo probable"%>
+                            <%when 2 %>
+                                <%="Bastante probable"%>
+                            <%when 3 %>
+                                <%="Algo probable"%>
+                            <%when 4 %>
+                                <%="Poco probable"%>
+                            <%when 5 %>
+                                <%="Nada probable"%>
+                            <% end %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>4. ¿Crees que el precio que pagas por nuestro servicio es alto, bajo o justo?</h4>
+                          <div class="col-sm-5">
+                            <%case  @quiz.question4 %>
+                            <%when 1 %>
+                                <%="Extremo alto"%>
+                            <%when 2 %>
+                                <%="Muy alto"%>
+                            <%when 3 %>
+                                <%="Ni alto ni bajo"%>
+                            <%when 4 %>
+                                <%="Muy bajo"%>
+                            <%when 5 %>
+                                <%="Etremo bajo"%>
+                            <% end %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+                            <div class="form-group">
+
+                          <h4>¿Cómo calificarías las políticas de garantía de nuestra compañía?</h4>
+                          <div class="col-sm-5">
+                            <%case  @quiz.question5 %>
+                            <%when 1 %>
+                                <%="Excelentes"%>
+                            <%when 2 %>
+                                <%="Buenas"%>
+                            <%when 3 %>
+                                <%="Ni buena ni mala"%>
+                            <%when 4 %>
+                                <%="Malas"%>
+                            <%when 5 %>
+                                <%="Malisimas"%>
+                            <% end %>
+                          </div><br><div class="hr-line-dashed"></div>
+                  </div>
+            
+            <div class="form-group">
+              <div class="col-sm-6 col-sm-offset-2">
+                <%= link_to quizzes_path, class: "btn btn-outline btn-danger pull-left" do%>
+                <i class="fa fa-list-ol"></i> Listado
+                <% end %>
+
+                <%= link_to edit_quiz_path(@quiz) , class: "btn btn-outline btn-primary pull-right" do %>
+                  <i class="fa fa-pencil"></i> Modificar
+                <% end %>
+              </div>
+            </div><br><br>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+    $(function() {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+        $('.dataTables-example').dataTable({
+            "order": [[ 0, "desc" ]],
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sSwfPath": "../../assets/dataTables/swf/copy_csv_xls_pdf.swf"
+            }
+        });
+
+    });
+
+</script>
+
+<% end %>
